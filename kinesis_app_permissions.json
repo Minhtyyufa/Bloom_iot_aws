@@ -1,0 +1,147 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ReadInputKinesis",
+            "Effect": "Allow",
+            "Action": [
+                "kinesis:DescribeStream",
+                "kinesis:GetShardIterator",
+                "kinesis:GetRecords"
+            ],
+            "Resource": [
+                "arn:aws:kinesis:region:account-id:stream/%STREAM_NAME_PLACEHOLDER%"
+            ]
+        },
+        {
+            "Sid": "WriteOutputKinesis",
+            "Effect": "Allow",
+            "Action": [
+                "kinesis:DescribeStream",
+                "kinesis:PutRecord",
+                "kinesis:PutRecords"
+            ],
+            "Resource": [
+                "arn:aws:kinesis:region:account-id:stream/%STREAM_NAME_PLACEHOLDER%"
+            ]
+        },
+        {
+            "Sid": "WriteOutputFirehose",
+            "Effect": "Allow",
+            "Action": [
+                "firehose:DescribeDeliveryStream",
+                "firehose:PutRecord",
+                "firehose:PutRecordBatch"
+            ],
+            "Resource": [
+                "arn:aws:firehose:region:account-id:deliverystream/%FIREHOSE_NAME_PLACEHOLDER%",
+                "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Destination-Data-Stream",
+                "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Destination-Aggregate-Stream"
+            ]
+        },
+        {
+            "Sid": "ReadInputFirehose",
+            "Effect": "Allow",
+            "Action": [
+                "firehose:DescribeDeliveryStream",
+                "firehose:Get*"
+            ],
+            "Resource": [
+                "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Source-Stream"
+            ]
+        },
+        {
+            "Sid": "ReadS3ReferenceData",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::kinesis-analytics-placeholder-s3-bucket/kinesis-analytics-placeholder-s3-object"
+            ]
+        },
+        {
+            "Sid": "ReadEncryptedInputKinesisStream",
+            "Effect": "Allow",
+            "Action": [
+                "kms:Decrypt"
+            ],
+            "Resource": [
+                "arn:aws:kms:region:account-id:key/%SOURCE_STREAM_ENCRYPTION_KEY_PLACEHOLDER%"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "kms:ViaService": "kinesis.us-east-1.amazonaws.com"
+                },
+                "StringLike": {
+                    "kms:EncryptionContext:aws:kinesis:arn": "arn:aws:kinesis:region:account-id:stream/%STREAM_NAME_PLACEHOLDER%"
+                }
+            }
+        },
+        {
+            "Sid": "WriteEncryptedOutputKinesisStream1",
+            "Effect": "Allow",
+            "Action": [
+                "kms:GenerateDataKey"
+            ],
+            "Resource": [
+                "arn:aws:kms:region:account-id:key/%DESTINATION_STREAM_ENCRYPTION_KEY_PLACEHOLDER%"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "kms:ViaService": "kinesis.us-east-1.amazonaws.com"
+                },
+                "StringLike": {
+                    "kms:EncryptionContext:aws:kinesis:arn": "arn:aws:kinesis:region:account-id:stream/%STREAM_NAME_PLACEHOLDER%"
+                }
+            }
+        },
+        {
+            "Sid": "WriteEncryptedOutputKinesisStream2",
+            "Effect": "Allow",
+            "Action": [
+                "kms:GenerateDataKey"
+            ],
+            "Resource": [
+                "arn:aws:kms:region:account-id:key/%DESTINATION_STREAM_ENCRYPTION_KEY_PLACEHOLDER%"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "kms:ViaService": "kinesis.us-east-1.amazonaws.com"
+                },
+                "StringLike": {
+                    "kms:EncryptionContext:aws:kinesis:arn": "arn:aws:kinesis:region:account-id:stream/%STREAM_NAME_PLACEHOLDER%"
+                }
+            }
+        },
+        {
+            "Sid": "WriteEncryptedOutputKinesisStream3",
+            "Effect": "Allow",
+            "Action": [
+                "kms:GenerateDataKey"
+            ],
+            "Resource": [
+                "arn:aws:kms:region:account-id:key/%DESTINATION_STREAM_ENCRYPTION_KEY_PLACEHOLDER%"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "kms:ViaService": "kinesis.us-east-1.amazonaws.com"
+                },
+                "StringLike": {
+                    "kms:EncryptionContext:aws:kinesis:arn": "arn:aws:kinesis:region:account-id:stream/%STREAM_NAME_PLACEHOLDER%"
+                }
+            }
+        },
+        {
+            "Sid": "UseLambdaFunction",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction",
+                "lambda:GetFunctionConfiguration"
+            ],
+            "Resource": [
+                "arn:aws:lambda:region:account-id:function:%FUNCTION_NAME_PLACEHOLDER%:%FUNCTION_VERSION_PLACEHOLDER%"
+            ]
+        }
+    ]
+}

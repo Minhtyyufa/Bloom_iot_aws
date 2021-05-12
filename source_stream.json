@@ -1,0 +1,9 @@
+{
+  "RoleARN": "arn:aws:iam::768910357496:role/IoT-Source-Stream-Role",
+  "BucketARN": "arn:aws:s3:::bloom-kinesis-bucket",
+  "Prefix": "source",
+  "BufferingHints": {
+    "SizeInMBs": 5,
+    "IntervalInSeconds": 60
+  }
+}

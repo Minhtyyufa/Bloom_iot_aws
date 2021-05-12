@@ -1,0 +1,10 @@
+{
+  "Name": "DYNAMO_STREAM",
+  "LambdaOutput": {
+    "ResourceARN": "arn:aws:lambda:us-east-1:768910357496:function:send_to_dynamo:$LATEST",
+    "RoleARN": "arn:aws:iam::768910357496:role/Kinesis-Analytics-Bloom_IoT_Data-Role"
+  },
+  "DestinationSchema": {
+    "RecordFormatType": "JSON"
+  }
+}

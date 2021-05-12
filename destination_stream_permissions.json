@@ -1,0 +1,102 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Action": [
+                "glue:GetTable",
+                "glue:GetTableVersion",
+                "glue:GetTableVersions"
+            ],
+            "Resource": [
+                "arn:aws:glue:us-east-1:768910357496:catalog",
+                "arn:aws:glue:us-east-1:768910357496:database/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%",
+                "arn:aws:glue:us-east-1:768910357496:table/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
+            ]
+        },
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Action": [
+                "s3:AbortMultipartUpload",
+                "s3:GetBucketLocation",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:ListBucketMultipartUploads",
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bloom-kinesis-bucket",
+                "arn:aws:s3:::bloom-kinesis-bucket/*"
+            ]
+        },
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction",
+                "lambda:GetFunctionConfiguration"
+            ],
+            "Resource": "arn:aws:lambda:us-east-1:768910357496:function:%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kms:GenerateDataKey",
+                "kms:Decrypt"
+            ],
+            "Resource": [
+                "arn:aws:kms:us-east-1:768910357496:key/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "kms:ViaService": "s3.us-east-1.amazonaws.com"
+                },
+                "StringLike": {
+                    "kms:EncryptionContext:aws:s3:arn": [
+                        "arn:aws:s3:::%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%/*"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Action": [
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-east-1:768910357496:log-group:/aws/kinesisfirehose/IoT-Destination-Data-Stream:log-stream:*"
+            ]
+        },
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Action": [
+                "kinesis:DescribeStream",
+                "kinesis:GetShardIterator",
+                "kinesis:GetRecords",
+                "kinesis:ListShards"
+            ],
+            "Resource": "arn:aws:kinesis:us-east-1:768910357496:stream/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kms:Decrypt"
+            ],
+            "Resource": [
+                "arn:aws:kms:us-east-1:768910357496:key/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "kms:ViaService": "kinesis.us-east-1.amazonaws.com"
+                },
+                "StringLike": {
+                    "kms:EncryptionContext:aws:kinesis:arn": "arn:aws:kinesis:us-east-1:768910357496:stream/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
+                }
+            }
+        }
+    ]
+}

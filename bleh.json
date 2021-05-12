@@ -1,0 +1,11 @@
+{
+  "sql": "SELECT * FROM 'ESP8266_TEST'",
+  "description": "Sends IoT data to firehose",
+  "actions": [
+    {
+      "firehose": {
+        "roleArn": "noice"
+      }
+    }
+  ]
+}

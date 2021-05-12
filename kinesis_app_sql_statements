@@ -1,0 +1,42 @@
+/**
+ * Welcome to the SQL editor
+ * =========================
+ * 
+ * The SQL code you write here will continuously transform your streaming data
+ * when your application is running.
+ *
+ * Get started by clicking "Add SQL from templates" or pull up the
+ * documentation and start writing your own custom queries.
+ */
+ 
+ -- Create an output stream with four columns, which is used to send IoT data to the destination
+CREATE OR REPLACE STREAM "DESTINATION_SQL_BASIC_STREAM" (APPROXIMATE_ARRIVAL_TIME TIMESTAMP, systemID VARCHAR(12), readingType VARCHAR(32), readingValue DOUBLE);
+
+-- Create a pump that continuously selects from the source stream and inserts it into the output data stream
+CREATE OR REPLACE PUMP "STREAM_PUMP_1" AS INSERT INTO "DESTINATION_SQL_BASIC_STREAM"
+
+-- Filter specific columns from the source stream
+SELECT STREAM "APPROXIMATE_ARRIVAL_TIME", "SystemID" as "systemID", "readingType", "readingValue" FROM "SOURCE_SQL_STREAM_001";
+
+
+
+ -- Create an output stream with four columns, which is used to send IoT data to the destination
+CREATE OR REPLACE STREAM "DYNAMO_STREAM" (APPROXIMATE_ARRIVAL_TIME TIMESTAMP, systemID VARCHAR(12), readingType VARCHAR(32), readingValue DOUBLE);
+
+-- Create a pump that continuously selects from the source stream and inserts it into the output data stream
+CREATE OR REPLACE PUMP "STREAM_PUMP_3" AS INSERT INTO "DYNAMO_STREAM"
+
+-- Filter specific columns from the source stream
+SELECT STREAM "APPROXIMATE_ARRIVAL_TIME", "SystemID" as "systemID", "readingType", "readingValue" FROM "SOURCE_SQL_STREAM_001";
+
+
+
+-- Create a second output stream with three columns, which is used to send aggregated min/max data to the destination
+CREATE OR REPLACE STREAM "DESTINATION_SQL_AGGREGATE_STREAM" (dateTime TIMESTAMP, highestCO2 DOUBLE, lowestCO2 DOUBLE);
+
+-- Create a pump that continuously selects from a source stream 
+CREATE OR REPLACE PUMP "STREAM_PUMP_2" AS INSERT INTO "DESTINATION_SQL_AGGREGATE_STREAM"
+
+-- Extract time in minutes, plus the highest and lowest value of device temperature in that minute, into the destination aggregate stream, aggregated per minute
+SELECT STREAM FLOOR("SOURCE_SQL_STREAM_001".ROWTIME TO MINUTE) AS "dateTime", MAX("readingValue") AS "highestCO2", MIN("readingValue") AS "lowestCO2" FROM "SOURCE_SQL_STREAM_001" WHERE "readingType"='CO2 Level' GROUP BY FLOOR("SOURCE_SQL_STREAM_001".ROWTIME TO MINUTE);
+

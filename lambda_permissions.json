@@ -1,0 +1,33 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:BatchGetItem",
+                "logs:CreateLogStream",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:UpdateItem",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-east-1:768910357496:*",
+                "arn:aws:dynamodb:us-east-1:768910357496:table/air-humidity-level",
+                "arn:aws:dynamodb:us-east-1:768910357496:table/co2-level",
+                "arn:aws:dynamodb:us-east-1:768910357496:table/air-temp-level",
+                "arn:aws:dynamodb:us-east-1:768910357496:table/liquid-level"
+            ]
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "*"
+        }
+    ]
+}

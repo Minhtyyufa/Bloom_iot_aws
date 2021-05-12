@@ -1,0 +1,35 @@
+[{
+	"NamePrefix": "SOURCE_SQL_STREAM",
+	"KinesisFirehoseInput": {
+		"RoleARN": "arn:aws:iam::768910357496:role/Kinesis-Analytics-Bloom_IoT_Data-Role",
+		"ResourceARN": "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Source-Stream"
+	},
+	"InputSchema": {
+		"RecordFormat": {
+			"RecordFormatType": "JSON",
+			"MappingParameters": {
+				"JSONMappingParameters":{
+					"RecordRowPath": "."
+				}
+			}
+		},
+		"RecordEncoding": "UTF-8",
+		"RecordColumns":[
+			{
+         			"Name": "SystemID",
+        			"Mapping": "$.SystemID",
+        			"SqlType": "VARCHAR(12)"
+        		},
+			{
+                       		"Name": "readingType",
+                        	"Mapping": "$.readingType",
+                        	"SqlType": "VARCHAR(32)"
+                	},
+			{
+                        	"Name": "readingValue",
+                        	"Mapping": "$.ReadingValue",
+                        	"SqlType": "DOUBLE"
+                	}
+		]
+	}	
+}]
