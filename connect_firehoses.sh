@@ -19,8 +19,7 @@ aws kinesisanalytics add-application-output --application-name ${APPLICATION_NAM
 sleep 5
 echo "Adding Aggregate Pipeline"
 
-#APP_VERSION_ID=$((APP_VERSION_ID+1))
-
+APP_VERSION_ID=$(aws kinesisanalytics describe-application --application-name ${APPLICATION_NAME} | jq .ApplicationDetail.ApplicationVersionId)
 
 AGGREGATE_DELIVERY_STREAM_ARN=$(aws firehose describe-delivery-stream --delivery-stream-name IoT-Destination-Aggregate-Stream | jq .DeliveryStreamDescription.DeliveryStreamARN)
 

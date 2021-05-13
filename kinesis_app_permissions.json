@@ -35,8 +35,8 @@
             ],
             "Resource": [
                 "arn:aws:firehose:region:account-id:deliverystream/%FIREHOSE_NAME_PLACEHOLDER%",
-                "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Destination-Data-Stream",
-                "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Destination-Aggregate-Stream"
+                "arn:aws:firehose:us-east-1:796900460656:deliverystream/IoT-Destination-Data-Stream",
+                "arn:aws:firehose:us-east-1:796900460656:deliverystream/IoT-Destination-Aggregate-Stream"
             ]
         },
         {
@@ -47,7 +47,7 @@
                 "firehose:Get*"
             ],
             "Resource": [
-                "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Source-Stream"
+                "arn:aws:firehose:us-east-1:796900460656:deliverystream/IoT-Source-Stream"
             ]
         },
         {

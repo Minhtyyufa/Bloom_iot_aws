@@ -1,8 +1,8 @@
 [{
 	"NamePrefix": "SOURCE_SQL_STREAM",
 	"KinesisFirehoseInput": {
-		"RoleARN": "arn:aws:iam::768910357496:role/Kinesis-Analytics-Bloom_IoT_Data-Role",
-		"ResourceARN": "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Source-Stream"
+		"RoleARN": "arn:aws:iam::796900460656:role/Kinesis-Analytics-Bloom_IoT_Data-Role",
+		"ResourceARN": "arn:aws:firehose:us-east-1:796900460656:deliverystream/IoT-Source-Stream"
 	},
 	"InputSchema": {
 		"RecordFormat": {

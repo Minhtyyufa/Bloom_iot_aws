@@ -1,6 +1,6 @@
 {
-  "RoleARN": "arn:aws:iam::768910357496:role/IoT-Destination-Data-Stream-Role",
-  "BucketARN": "arn:aws:s3:::bloom-kinesis-bucket",
+  "RoleARN": "arn:aws:iam::796900460656:role/IoT-Destination-Data-Stream-Role",
+  "BucketARN": "arn:aws:s3:::bloom-kinesis-bucket-1",
   "Prefix": "data/",
   "BufferingHints": {
     "SizeInMBs": 5,

@@ -34,7 +34,7 @@
                 "firehose:PutRecordBatch"
             ],
             "Resource": [
-                "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Destination-Data-Stream"
+                "arn:aws:firehose:us-east-1:796900460656:deliverystream/IoT-Destination-Data-Stream"
             ]
         },
         {
@@ -45,7 +45,7 @@
                 "firehose:Get*"
             ],
             "Resource": [
-                "arn:aws:firehose:us-east-1:768910357496:deliverystream/IoT-Source-Stream"
+                "arn:aws:firehose:us-east-1:796900460656:deliverystream/IoT-Source-Stream"
             ]
         },
         {
@@ -138,7 +138,7 @@
                 "lambda:GetFunctionConfiguration"
             ],
             "Resource": [
-                "arn:aws:lambda:us-east-1:768910357496:function:send_to_dynamo:$LATEST"
+                "arn:aws:lambda:us-east-1:796900460656:function:send_to_dynamo:$LATEST"
             ]
         }
     ]
