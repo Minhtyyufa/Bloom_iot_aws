@@ -4,7 +4,7 @@
 
 # Replace this with your bucket name created previously
 BUCKET_NAME="bloom-kinesis-bucket-1"
-find . -type f -name "*.json" -exec sed -i "s/bloom-kinesis-bucket/${BUCKET_NAME}/g" {} +
+find . -type f -name "*.json" -exec sed -i "s/bloom-kinesis-bucket-1/${BUCKET_NAME}/g" {} +
 
 # CREATE DYNAMO DB TABLES
 CO2_TABLE_ARN=$(aws dynamodb create-table --attribute-definitions AttributeName="readingID",AttributeType="S" --table-name "co2-level" --key-schema AttributeName="readingID",KeyType="HASH" --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 | jq .TableDescription.TableArn)
