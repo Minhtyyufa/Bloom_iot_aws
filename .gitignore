@@ -1,0 +1,4 @@
+*.bak
+*.swp
+temp_auth_identity_pool_trust_policy.json
+temp.json
