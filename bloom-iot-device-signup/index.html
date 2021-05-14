@@ -234,7 +234,7 @@
       function attachPrincipalPolicy(thingName) {
         var params = {
             principal: certificateArn, /* required */
-            policyName: '__POLICY_NAME__' /* required */
+            policyName: "iot-thing-policy" /* required */
         };
           new AWS.Iot().attachPrincipalPolicy(params, function (err, data) {
             if (err) {
