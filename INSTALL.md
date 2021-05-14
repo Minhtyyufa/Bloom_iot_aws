@@ -2,9 +2,9 @@
 
 Please see [BUILD.MD](./BUILD.MD) first
 
-Start by editing [customize_scripts.sh](./customize_scripts.sh). Change the bucket name to the bucket name that you desire. Then change the ACCOUNT_ID variable to be your aws account number.
+Start by editing [customize_scripts.sh](./build_scripts/customize_scripts.sh) in the build_scripts folder. Change the bucket name to the bucket name that you desire. Then change the ACCOUNT_ID variable to be your aws account number.
 
-Run [customize_scripts.sh](./customize_scripts.sh) like so:
+Run [customize_scripts.sh](./build_scripts/customize_scripts.sh) like so:
 
 `
 chmod 755 customize_scripts.sh
@@ -13,7 +13,7 @@ chmod 755 customize_scripts.sh
 
 If the bucket name already exists, change the bucket name and try again.
 
-Once you've found the bucket name, go into the [setup.sh](./setup.sh) script and change the bucket name to match your bucket name. Then run the script like so:
+Once you've found the bucket name, go into the [setup.sh](./build_scripts/setup.sh) script and change the bucket name to match your bucket name. Then run the script like so:
 
 `
 chmod 755 setup.sh
@@ -29,7 +29,7 @@ Go to the **Cognito Console** and go to **User Pools**. Click the **bloom-pool**
 
 Click **Domain name** under  **App integration** and enter a **domain name**. Choose **Check availability**. Choose **Save changes**. 
 
-### What to replace in the index.html file
+### What to replace in the [bloom-iot-device-signup folder](./bloom-iot-device-signup/index.html) file
 
 **`__REGION__`** → The region such as **us-east-1**. It can be found in the cognito webdomain\
 **`__CLIENT_ID__`** → **Cognito** → **User Pools** → **bloom-pool** → **App Integration** → **App client settings** → **bloom-app-client**→ **ID**
@@ -43,12 +43,12 @@ In the **Arduino IDE** go to **File menu** → **preferences** and paste in the 
 Then go to **Tools** → **Board** → **Board Manager** and search for and install **esp8266** by **ESP8266 Community** \
 Next go to **Tools** → **Board** → **The arduino board** (the one used is **NodeMCU 1.0 (ESP-12E Module)**)
 
-###Libraries to install
+### Libraries to install
 Go to **Sketch** → **Include Library** → **Manage Libraries** \
 Install:
 **Adafruit_SGP30**, **PubSubClient**, **DHT sensor library**, and **ESP8266WiFi**
 
-###What to replace/inpup in the code
+### What to replace/inpup in the code
 **ssid** → **Wifi SSID** \
 **password** → **Wifi password** \
 **certficatePemCrt** → **Certificate Pem** (This is created in the website when a device is registered).\
