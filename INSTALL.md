@@ -8,6 +8,7 @@ Run [customize_scripts.sh](./build_scripts/customize_scripts.sh) like so:
 
 `
 chmod 755 customize_scripts.sh
+
 ./customize_scripts.sh
 `
 
