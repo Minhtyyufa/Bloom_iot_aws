@@ -2,7 +2,7 @@
 
 Please see [BUILD.MD](./BUILD.MD) first
 
-Start by editing [customize_scripts.sh](./build_scripts/customize_scripts.sh) in the build_scripts folder. Change the bucket name to the bucket name that you desire. Then change the ACCOUNT_ID variable to be your aws account number.
+Start by editing [customize_scripts.sh](./build_scripts/customize_scripts.sh) in the `build_scripts` folder. Change the bucket name to the bucket name that you desire. Then change the `ACCOUNT_ID` variable to be your aws account number.
 
 Run [customize_scripts.sh](./build_scripts/customize_scripts.sh) like so:
 
