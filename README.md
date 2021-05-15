@@ -12,4 +12,4 @@ Here is our detailed solution architecture diagram in AWS. It details our exact 
 
 ## Our Presentation
 [![Bloom IoT Cloud Computing](https://img.youtube.com/vi/HLX3SDd_6ww/0.jpg)](https://www.youtube.com/watch?v=HLX3SDd_6ww)
- The deck for our presentation can be found here: [Deck](./photos/Cloud Computing Final Presentation.pdf)
+ The deck for our presentation can be found here: [Deck](./photos/final_presentation_deck.pdf)
