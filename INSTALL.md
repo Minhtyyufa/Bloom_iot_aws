@@ -33,7 +33,7 @@ Click `Domain name` under  `App integration` and enter a `domain name`. Choose `
 ### What to replace in the [bloom-iot-device-signup folder](./bloom-iot-device-signup/index.html) file
 
 `__REGION__` → The region such as `us-east-1`. It can be found in the cognito webdomain\
-`__CLIENT_ID__` → Where to find in AWS: `Cognito` → `User Pools` → `bloom-pool` → `App Integration` → `App client settings` → `bloom-app-client`→ `ID`
+`__CLIENT_ID__` → Where to find in AWS: `Cognito` → `User Pools` → `bloom-pool` → `App Integration` → `App client settings` → `bloom-app-client`→ `ID`\
 `__APP_WEB_DOMAIN__` → the cognito webdomain you entered before without "https://". For example, `bloom.auth.us-east-1.amazoncognito.com\`
 `__AMPLIFY_URI__` → the URI of website hosted by Amplify \
 `__USER_POOL_ID__` → Where to find in AWS: `Cognito` → `User Pools` → `bloom-pool` → `General Settings` → `Pool ID`\
