@@ -7,6 +7,7 @@ Start by editing [customize_scripts.sh](./build_scripts/customize_scripts.sh) in
 Run [customize_scripts.sh](./build_scripts/customize_scripts.sh) like so:
 
 ```
+cd build_scripts
 chmod 755 customize_scripts.sh  
 ./customize_scripts.sh
 ```
