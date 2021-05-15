@@ -6,19 +6,19 @@ Start by editing [customize_scripts.sh](./build_scripts/customize_scripts.sh) in
 
 Run [customize_scripts.sh](./build_scripts/customize_scripts.sh) like so:
 
-`
+```
 chmod 755 customize_scripts.sh  
 ./customize_scripts.sh
-`
+```
 
 If the bucket name already exists, change the bucket name and try again.
 
 Once you've found the bucket name, go into the [setup.sh](./build_scripts/setup.sh) script and change the bucket name to match your bucket name. Then run the script like so:
 
-`
+```
 chmod 755 setup.sh
 ./setup.sh
-`
+```
 Take note of the printed values at the end.
 
 ## Setting up the Registration website
